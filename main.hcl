@@ -1,9 +1,6 @@
 resource "lab" "main" {
   title       = "praneeth-lab-test"
-  description = <<-EOF
-  This is the Skeleton Lab.
-  You can use this as a minimal starting point for developing labs.
-  EOF
+  description = "This is the Skeleton Lab.\nYou can use this as a minimal starting point for developing labs.\n"
 
   # timelimit and idle are both required on every lab.
   settings {
@@ -19,5 +16,27 @@ resource "lab" "main" {
     }
   }
 
-  layout = resource.layout.single_panel
+  layout = resource.layout.with_instructions
+
+  content {
+    chapter "__default" {
+      page "intro" {
+        reference = resource.page.intro
+        title     = "intro"
+      }
+
+      page "shell" {
+        reference = resource.page.shell
+        title     = "shell only"
+        layout    = resource.layout.shell_only
+      }
+
+      page "wrap" {
+        reference = resource.page.wrap
+        title     = "wrap up"
+      }
+
+      title = "Default"
+    }
+  }
 }
