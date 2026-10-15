@@ -16,3 +16,12 @@ resource "container" "shell" {
     memory = 256
   }
 }
+
+resource "google_project" "gcp-project" {
+  regions  = ["us-east1"]
+  services = ["container.googleapis.com", "sqladmin.googleapis.com"]
+
+  user "student" {
+    roles = ["roles/owner"]
+  }
+}

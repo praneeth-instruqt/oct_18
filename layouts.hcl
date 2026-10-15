@@ -5,6 +5,16 @@ resource "layout" "with_instructions" {
       title  = "terminal"
     }
 
+    tab "gcp-creds" {
+      target = resource.cloud_credentials.gcp-creds
+      title  = "GCP Credentials"
+    }
+
+    tab "gcp-console" {
+      target = resource.virtual_browser.gcp-console
+      title  = "GCP Console"
+    }
+
     width = "50"
   }
 
