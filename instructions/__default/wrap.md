@@ -1,2 +1,3 @@
-wrap up page
+# Wrap up
 
+Nice work, you completed the lab!

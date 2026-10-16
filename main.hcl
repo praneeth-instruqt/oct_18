@@ -1,6 +1,6 @@
 resource "lab" "main" {
   title       = "praneeth-lab-test"
-  description = "This is the Skeleton Lab.\nYou can use this as a minimal starting point for developing labs.\n"
+  description = "Test lab for repo sync (updated 2026-10-16 from CLI).\n"
 
   # timelimit and idle are both required on every lab.
   settings {
