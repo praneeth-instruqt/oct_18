@@ -1,0 +1,15 @@
+#!/bin/sh
+set -u
+
+ENABLED=$(gcloud services list --enabled --format='value(config.name)' 2>/dev/null)
+
+echo "$ENABLED" | grep -q 'artifactregistry.googleapis.com'
+AR=$?
+
+echo "$ENABLED" | grep -q 'run.googleapis.com'
+RUN=$?
+
+if [ $AR -ne 0 ] || [ $RUN -ne 0 ]; then
+  exit 1
+fi
+exit 0

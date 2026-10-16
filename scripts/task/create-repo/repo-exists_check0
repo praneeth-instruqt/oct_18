@@ -1,0 +1,8 @@
+#!/bin/sh
+set -u
+
+gcloud artifacts repositories describe web-app --location=us-east1 --format='value(name)' 2>/dev/null
+if [ $? -ne 0 ]; then
+  exit 1
+fi
+exit 0

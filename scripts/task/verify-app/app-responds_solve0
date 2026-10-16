@@ -1,0 +1,17 @@
+#!/bin/sh
+set -eu
+
+# Ensure the service exists first
+PROJECT=$(gcloud config get-value project 2>/dev/null)
+gcloud run deploy sample-app \
+  --image=us-east1-docker.pkg.dev/$PROJECT/web-app/sample-app:v1 \
+  --region=us-east1 \
+  --platform=managed \
+  --allow-unauthenticated \
+  --quiet
+
+# Wait for it to be ready
+sleep 10
+
+URL=$(gcloud run services describe sample-app --region=us-east1 --format='value(status.url)')
+curl -s "$URL" > /dev/null

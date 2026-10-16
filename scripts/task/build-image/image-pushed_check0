@@ -1,0 +1,10 @@
+#!/bin/sh
+set -u
+
+PROJECT=$(gcloud config get-value project 2>/dev/null)
+IMAGES=$(gcloud artifacts docker images list us-east1-docker.pkg.dev/$PROJECT/web-app --format='value(package)' 2>/dev/null)
+
+if [ -z "$IMAGES" ]; then
+  exit 1
+fi
+exit 0

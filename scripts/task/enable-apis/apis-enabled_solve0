@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+gcloud services enable artifactregistry.googleapis.com run.googleapis.com --quiet

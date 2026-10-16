@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+PROJECT=$(gcloud config get-value project 2>/dev/null)
+
+gcloud run deploy sample-app \
+  --image=us-east1-docker.pkg.dev/$PROJECT/web-app/sample-app:v1 \
+  --region=us-east1 \
+  --platform=managed \
+  --allow-unauthenticated \
+  --quiet

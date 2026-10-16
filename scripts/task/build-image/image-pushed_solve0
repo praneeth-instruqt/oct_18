@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+PROJECT=$(gcloud config get-value project 2>/dev/null)
+
+# Configure Docker auth
+gcloud auth configure-docker us-east1-docker.pkg.dev --quiet
+
+# Build with Cloud Build
+cd /root/sample-app
+gcloud builds submit --tag us-east1-docker.pkg.dev/$PROJECT/web-app/sample-app:v1 --quiet

@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+gcloud artifacts repositories create web-app \
+  --repository-format=docker \
+  --location=us-east1 \
+  --description="Docker repository for web app" \
+  --quiet

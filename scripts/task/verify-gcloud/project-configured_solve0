@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+gcloud config set project "$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID" --quiet
